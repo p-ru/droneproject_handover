@@ -1,15 +1,17 @@
 #!/bin/bash
 
-# 1. Start ROS core/launch in the background
-echo "Starting ROS..."
-# EDIT THIS LINE: Replace with your actual launch file
-# Example: roslaunch my_drone_pkg main_mission.launch &
+echo "Starting ROS master..."
+roscore &
+sleep 3
+
+echo "Starting rosbridge..."
 roslaunch rosbridge_server rosbridge_websocket.launch &
+sleep 2
 
-# 2. Start Web Video Server (if you use it for streaming)
-rosrun web_video_server web_video_server &
+echo "Starting Web Video Server on 8081..."
+rosrun web_video_server web_video_server _port:=8081 &
+sleep 2
 
-# 3. Start the Web UI
-echo "Starting Web UI..."
+echo "Starting Web UI on 3000..."
 cd /web_app
-npm start
+npm start -- --port=3000
