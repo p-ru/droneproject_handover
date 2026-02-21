@@ -1,0 +1,28 @@
+#ifndef _SLROS_INITIALIZE_H_
+#define _SLROS_INITIALIZE_H_
+
+#include "slros_busmsg_conversion.h"
+#include "slros_generic.h"
+#include "trajGen_with_yaw_types.h"
+
+extern ros::NodeHandle * SLROSNodePtr;
+extern const std::string SLROSNodeName;
+
+// For Block trajGen_with_yaw/Subscribe
+extern SimulinkSubscriber<geometry_msgs::Pose, SL_Bus_trajGen_with_yaw_geometry_msgs_Pose> Sub_trajGen_with_yaw_321;
+
+// For Block trajGen_with_yaw/Subscribe1
+extern SimulinkSubscriber<std_msgs::Bool, SL_Bus_trajGen_with_yaw_std_msgs_Bool> Sub_trajGen_with_yaw_322;
+
+// For Block trajGen_with_yaw/position reading
+extern SimulinkSubscriber<nav_msgs::Odometry, SL_Bus_trajGen_with_yaw_nav_msgs_Odometry> Sub_trajGen_with_yaw_377;
+
+// For Block trajGen_with_yaw/Publish
+extern SimulinkPublisher<geometry_msgs::Twist, SL_Bus_trajGen_with_yaw_geometry_msgs_Twist> Pub_trajGen_with_yaw_319;
+
+// For Block trajGen_with_yaw/Get Parameter test
+extern SimulinkParameterGetter<real64_T, double> ParamGet_trajGen_with_yaw_317;
+
+void slros_node_init(int argc, char** argv);
+
+#endif

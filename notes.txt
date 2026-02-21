@@ -1,0 +1,3 @@
+rosservice call /Mavic_3M/pull_key_info "REMOTE_CONTROLLER.CustomButton3Down"
+
+/workspaces/BT_projects/Groot/build/devel/lib/groot/Groot

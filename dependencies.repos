@@ -1,0 +1,6 @@
+# In your new file: dependencies.repos
+repositories:
+  src/behaviortree_ros: # The path where it should be cloned
+    type: git
+    url: https://github.com/p-ru/BehaviorTree.ROS.git
+    version: new

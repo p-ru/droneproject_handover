@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  drone-app:
+    build: .
+    container_name: drone_project_all_in_one
+    
+    # Use Host networking so ROS and Localhost work easily
+    network_mode: host
+    
+    # Environment variables for GUI apps (Rviz/Groot)
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - NPM_CONFIG_LOGLEVEL=info
+    
+    # Volumes for GUI support ONLY (No code mapping!)
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /home/${USER}/.Xauthority:/root/.Xauthority:rw
+
+    # GPU Support (Optional: keep if your logic needs CUDA)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

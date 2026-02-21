@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# ROS local build artifacts (Don't copy these!)
+build/
+devel/
+logs/
+.catkin_tools/
+
+
+# Web local artifacts (Don't copy these!)
+web_ui/node_modules/
+web_ui/dist/
+web_ui/.env
+
+# Docker config
+Dockerfile
+docker-compose.yml
+README.md

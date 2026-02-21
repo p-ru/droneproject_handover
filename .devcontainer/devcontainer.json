@@ -1,0 +1,34 @@
+{
+    "name": "ROS noetic",
+    //"image": "osrf/ros:noetic-desktop-full",
+    
+
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "ros-dev",
+    "workspaceFolder": "/workspaces",
+    
+    "remoteUser": "matt",
+    "overrideCommand": false,
+    "postStartCommand": "sudo chown -R matt:matt /workspaces",
+    "postCreateCommand": "echo 'Container ready. Run rosdep manually if needed.'",
+    "shutdownAction": "stopCompose",
+
+    
+
+    "customizations": {
+        "settings": {
+            "python.terminal.activateEnvironment": false,
+            "terminal.integrated.defaultProfile.linux": "bash"
+        },
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools",
+                "njpwerner.autodocstring"
+            ]
+        }
+    }
+}
