@@ -1,6 +1,10 @@
-/.catkin_tools
-/.catkin_workspace
-/build
-/devel
-/logs
-/node_modules
+
+# ROS builds
+build/
+devel/
+logs/
+.catkin_tools/
+.catkin_workspace
+
+# Javascript / Web UI
+node_modules/
