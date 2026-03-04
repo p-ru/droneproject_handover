@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   drone-app:
@@ -8,17 +7,26 @@ services:
     # Use Host networking so ROS and Localhost work easily
     network_mode: host
     
+    
+    tty: true            # This simulates a terminal
+    stdin_open: true     # This keeps the input stream open
+
+
     # Environment variables for GUI apps (Rviz/Groot)
     environment:
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
       - NPM_CONFIG_LOGLEVEL=info
+      - PYTHONUNBUFFERED=1  # This forces Python to flush logs immediately
     
     # Volumes for GUI support ONLY (No code mapping!)
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /home/${USER}/.Xauthority:/root/.Xauthority:rw
-
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./start_project.sh:/start_project.sh
+      - ./config/:/ros_ws/src/behaviortree_ros/config/:rw
+      - ./launch/:/ros_ws/src/behaviortree_ros/launch/:rw
     # GPU Support (Optional: keep if your logic needs CUDA)
     deploy:
       resources:
@@ -27,3 +35,4 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+

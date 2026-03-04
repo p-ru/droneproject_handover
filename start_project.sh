@@ -1,17 +1,32 @@
 #!/bin/bash
 
+# 1. roscore
 echo "Starting ROS master..."
 roscore &
 sleep 3
 
-echo "Starting rosbridge..."
+# 2. Launch Rosbridge (Internal include)
+echo "Starting Rosbridge..."
 roslaunch rosbridge_server rosbridge_websocket.launch &
-sleep 2
 
-echo "Starting Web Video Server on 8081..."
-rosrun web_video_server web_video_server _port:=8081 &
-sleep 2
+# 3. Launch Web Video Server (Setting the param via command line)
+echo "Starting Web Video Server on port 9092..."
+rosrun web_video_server web_video_server _port:=9092 &
 
-echo "Starting Web UI on 3000..."
+# 4. Launch RViz
+echo "Starting RViz..."
+rosrun rviz rviz -d $(rospack find tagslam)/example/tagslam_example.rviz &
+
+
+echo "Starting Web UI..."
 cd /web_app
-npm start -- --port=3000
+npm start &
+
+Groot
+
+
+# echo "Launching mission..."
+# roslaunch behaviortree_ros run_waypoints.launch
+
+# echo "Launching mission..."
+# roslaunch behaviortree_ros run_waypoints.launch

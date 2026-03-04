@@ -1,6 +1,7 @@
 {
 	"name": "Drone Project",
-	"dockerComposeFile": "../docker-compose.yml",
+	// "dockerComposeFile": "../docker-compose.yml",
 	"service": "drone-app",
-	"workspaceFolder": "/ros_ws"
+	"workspaceFolder": "/ros_ws",
+	"postCreateCommand": "echo 'source /opt/ros/noetic/setup.bash' >> ~/.bashrc && echo 'source /ros_ws/devel/setup.bash' >> ~/.bashrc"
 }

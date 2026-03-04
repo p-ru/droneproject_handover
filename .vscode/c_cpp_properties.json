@@ -7,6 +7,12 @@
                 "${workspaceFolder}/src/behaviortree_ros/include",
                 "/workspaces/tagslam_ros2_root/devel/include",
                 "/opt/ros/noetic/include",
+                "${workspaceFolder}/devel/include",
+                "/opt/ros/noetic/include/**",
+                "/usr/include/**",
+                "${workspaceFolder}/src/apriltag/apriltag_ros/apriltag_umich",
+                "${workspaceFolder}/src/tagslam/include",
+                "${workspaceFolder}/src/flex_sync/include",
                 "${workspaceFolder}/devel/include"
             ],
             "defines": [],
