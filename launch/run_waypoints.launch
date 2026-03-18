@@ -22,16 +22,8 @@
     </node>
 
 
-    <!-- Launch trajGen node -->
-    <!-- <param name="trajGen/velo" value="0.1"/> -->
-    <!-- <node pkg="behaviortree_ros" type="trajgen_supervisor" name="trajgen_supervisor" output="screen">
-    </node> -->
 
-    <!-- <node pkg="trajgen" type="trajGen" name="trajGen" output="screen">
-    <param name="/velo" value="0.1"/>
-    </node> -->
-
-
+    <!---the velocity param must be specified here-->
     <param name="/trajGen/velo" value="0.1"/>
     <node pkg="trajgen_with_yaw" type="trajGen_with_yaw" name="trajGen_with_yaw" output="screen">
     </node>
@@ -39,12 +31,4 @@
 
 
 
-    <!-- <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
-    <node pkg="web_video_server" type="web_video_server" name="web_video_server" output="screen">
-        <param name="port" value="9092"/>
-    </node>
-
-
-
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find tagslam)/example/tagslam_example.rviz" /> -->
 </launch>

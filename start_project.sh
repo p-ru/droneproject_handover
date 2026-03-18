@@ -17,14 +17,15 @@ rosrun web_video_server web_video_server _port:=9092 &
 echo "Starting RViz..."
 rosrun rviz rviz -d $(rospack find tagslam)/example/tagslam_example.rviz &
 
-
 echo "Starting Web UI..."
 cd /web_app
 npm start &
 
-Groot
+Groot &
+echo "All systems launched. Container is active."
 
-
+# This waits for all background processes started in this script
+wait
 # echo "Launching mission..."
 # roslaunch behaviortree_ros run_waypoints.launch
 
